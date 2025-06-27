@@ -1,125 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simple HTML Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</head>
-<body class="bg-black bg-[url(/bg.jpg)] bg-cover">
-    <div class="container text-sm font-mono mx-4">
-        <div class="icon group hover:cursor-pointer w-20 h-20 relative flex items-center justify-center">
-            <img src="icon1.png" alt="Icon 1" class="group-hover:brightness-50 transition">
-            <div class="text-white absolute bottom-0 group-hover:bg-blue-800 text-center transition">About MLSC</div>
+  </head>
+  <body class="bg-black bg-[url(/bg.jpg)] bg-cover">
+    <div id="container" 
+    class="container text-sm font-mono mx-5">
+    <div class="column flex">
+      <div
+        class="icon group hover:cursor-pointer w-25 h-25 relative flex items-center justify-center"
+      >
+        <img
+          src="icon1.png"
+          alt="About"
+          class="group-hover:brightness-50 transition"
+        />
+        <div
+          class="absolute bottom-0 text-black px-1 bg-white bg-opacity-15 group-hover:bg-blue-800 group-hover:text-white text-center transition"
+        >
+          About_MLSC
+        </div>
+      </div>
+       <div
+        class="icon group hover:cursor-pointer w-25 h-25 relative flex items-center justify-center"
+      >
+        <img
+          src="register.png"
+          alt="Registrations"
+          class="group-hover:brightness-50 transition"
+        />
+        <div
+          class="absolute bottom-0 text-black px-1 bg-white bg-opacity-15 group-hover:bg-blue-800 group-hover:text-white text-center transition"
+        >
+          Registrations
+        </div>
         </div>
     </div>
-    <div class="footer z-1 w-screen h-10 absolute bottom-0 bg-slate-50 flex justify-between">
-        <button class="start-button w-15 h-full px-4 text-black hover:text-white hover:bg-blue-800 transition hover:cursor-pointer hover:bg-blue-90" onclick="document.getElementById('start-menu').classList.toggle('hidden');">
-            <img src="logo.png">
-        </button>
-        <div class="copyright my-auto ml-40 font-mono">&copy; MLSC DB, 2025</div>
-        <div class="px-2 my-auto font-mono" id="date-time"></div>
-    </div>
-    <div id="start-menu" class="start-menu w-[300px] h-[204px] font-mono hidden bg-gray-500 absolute bottom-10 left-0 border-2 border-slate-50 mx-0.5 my-1 z-50 drop-shadow-lg">
-        <div class="bg-slate-50 h-10 text-black hover:text-white hover:cursor-pointer hover:bg-blue-800 flex flex-col align-middle justify-center px-2">Refresh</div>
-        <div class="bg-slate-50 h-10 text-black hover:text-white hover:cursor-pointer hover:bg-blue-800 flex flex-col align-middle justify-center px-2">About this computer</div>
-        <div class="bg-slate-50 h-10 text-black hover:text-white hover:cursor-pointer hover:bg-blue-800 flex flex-col align-middle justify-center px-2">Meet the Gensec</div>
-        <div class="bg-slate-50 h-10 text-black hover:text-white hover:cursor-pointer hover:bg-blue-800 flex flex-col align-middle justify-center px-2">Contact Us</div>
-        <div class="bg-slate-50 h-10 text-black hover:text-white hover:cursor-pointer hover:bg-blue-800 flex flex-col align-middle justify-center px-2">Secret Menu</div>
-    </div>
-    <div id="context-menu" class="rounded shadow-lg w-[300px] h-[204px] font-mono hidden bg-gray-500 absolute bottom-10 left-0 border-2 border-slate-50 mx-0.5 my-1 z-50 scale-90 drop-shadow-lg">
-        <div class="bg-slate-50 h-10 text-black hover:text-white hover:cursor-pointer hover:bg-blue-800 flex flex-col align-middle justify-center px-2">Refresh</div>
-        <div class="bg-slate-50 h-10 text-black hover:text-white hover:cursor-pointer hover:bg-blue-800 flex flex-col align-middle justify-center px-2">About this computer</div>
-        <div class="bg-slate-50 h-10 text-black hover:text-white hover:cursor-pointer hover:bg-blue-800 flex flex-col align-middle justify-center px-2">Meet the Gensec</div>
-        <div class="bg-slate-50 h-10 text-black hover:text-white hover:cursor-pointer hover:bg-blue-800 flex flex-col align-middle justify-center px-2">Contact Us</div>
-        <div class="bg-slate-50 h-10 text-black hover:text-white hover:cursor-pointer hover:bg-blue-800 flex flex-col align-middle justify-center px-2">Secret Menu</div>
-    </div>
-    <div id="popup" class="popup hidden w-full h-full absolute inset-0 bg-stone-400 border-2 border-slate-100 transition-all duration-300 scale-95 opacity-100">
-        <div class="header flex justify-between items-center px-0.5 py-0.5 bg-slate-100">
-            <div></div>
-            <div class="ml-6">Title</div>
-            <div class="buttons flex gap-1 mb-0.5">
-                <button class="h-full w-6 hover:cursor-pointer bg-slate-400 hover:bg-slate-700 rounded border-1 border-slate-400" id="popup-min">&#9634;</button>
-                <button class="h-full w-6 hover:cursor-pointer bg-slate-400 hover:bg-slate-700 rounded border-1 border-slate-400" id="popup-close">X</button>
-            </div>
+      
+      <div
+        class="icon group hover:cursor-pointer w-25 h-25 relative flex items-center justify-center"
+      >
+        <img
+          src="icon1.png"
+          alt="Icon 1"
+          class="group-hover:brightness-50 transition"
+        />
+        <div
+          class="absolute bottom-0 text-black px-1 bg-white bg-opacity-15 group-hover:bg-blue-800 group-hover:text-white text-center transition"
+        >
+          Meet_the_Team
         </div>
-        <div>Hello World</div>
+        </div>
+        <div
+        class="icon group hover:cursor-pointer w-25 h-25 relative flex items-center justify-center"
+      >
+        <img
+          src="icon1.png"
+          alt="Icon 1"
+          class="group-hover:brightness-50 transition"
+        />
+        <div
+          class="absolute bottom-0 text-black px-1 bg-white bg-opacity-15 group-hover:bg-blue-800 group-hover:text-white text-center transition"
+        >
+          Sacred_Timeline
+        </div>
+        </div>
+         <div
+        class="icon group hover:cursor-pointer w-25 h-25 relative flex items-center justify-center"
+      >
+        <img
+          src="icon1.png"
+          alt="Icon 1"
+          class="group-hover:brightness-50 transition"
+        />
+        <div
+          class="absolute bottom-0 text-black px-1 bg-white bg-opacity-15 group-hover:bg-blue-800 group-hover:text-white text-center transition"
+        >
+          The_Lore
+        </div>
+        </div>
+        
     </div>
-    <script>
-        document.querySelector('.icon').addEventListener('click', function() {
-            const popup = document.getElementById('popup');
-            popup.classList.remove('hidden', 'opacity-0', 'scale-95');
-            setTimeout(() => {
-                popup.classList.add('opacity-100', 'scale-100');
-            }, 10);
-        });
-
-        document.getElementById('popup-close').addEventListener('click', function() {
-            const popup = document.getElementById('popup');
-            popup.classList.remove('opacity-100', 'scale-100');
-            popup.classList.add('opacity-0', 'scale-95');
-            setTimeout(() => {
-                popup.classList.add('hidden');
-            }, 300);
-        });
-    </script>
-    <script>
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-            document.getElementById('start-menu').classList.add('hidden');
-            const menu = document.getElementById('context-menu');
-            menu.classList.remove('hidden', 'scale-90');
-            menu.style.left = e.clientX + 'px';
-            menu.style.top = e.clientY + 'px';
-            setTimeout(() => {
-                menu.classList.add('scale-100');
-            }, 10);
-        });
-
-        document.addEventListener('click', function(e) {
-            const contextMenu = document.getElementById('context-menu');
-            if (!contextMenu.contains(e.target)) {
-                contextMenu.classList.add('hidden', 'scale-95');
-                contextMenu.classList.remove('scale-100');
-            }
-        });
-
-        window.addEventListener('resize', () => {
-            const contextMenu = document.getElementById('context-menu');
-            contextMenu.classList.add('hidden', 'scale-95');
-            contextMenu.classList.remove('scale-100');
-        });
-        window.addEventListener('scroll', () => {
-            const contextMenu = document.getElementById('context-menu');
-            contextMenu.classList.add('hidden', 'scale-95');
-            contextMenu.classList.remove('scale-100');
-        });
-
-        document.addEventListener('click', function(e) {
-            const startMenu = document.getElementById('start-menu');
-            const startButton = document.querySelector('.start-button');
-            if (!startMenu.contains(e.target) && !startButton.contains(e.target)) {
-                startMenu.classList.add('hidden');
-            }
-        });
-    </script>
-    <script>
-        function updateDateTime() {
-            const now = new Date();
-            const options = { 
-                year: 'numeric', 
-                month: 'short', 
-                day: 'numeric', 
-                hour: '2-digit', 
-                minute: '2-digit', 
-                second: '2-digit',
-                hour12: false
-            };
-            document.getElementById('date-time').textContent = now.toLocaleString(undefined, options);
+    <div id="footer" 
+    class="footer z-1 w-screen h-10 absolute bottom-0 bg-yellow-50 flex justify-between"
+    >
+      <button
+        class="start-button w-15 h-full px-4 text-black hover:text-white hover:bg-blue-800 transition hover:cursor-pointer hover:bg-blue-90"
+        onclick="document.getElementById('start-menu').classList.toggle('hidden');"
+      >
+        <img src="logo.png" />
+      </button>
+      <div class="copyright mx-2 my-auto ml-40 font-mono hover:cursor-default">&copy; MLSC DB, 2025</div>
+      <div class="px-4 my-auto font-mono hover:cursor-default" id="date-time"></div>
+    </div>
+    <div id="start-menu"
+      class="start-menu w-[300px] h-[204px] font-mono hidden bg-gray-500 absolute bottom-10 left-0 border-2 border-slate-50 mx-0.5 my-1 z-50 drop-shadow-lg"
+    >
+      <div
+        class="refresh bg-slate-50 h-10 text-black hover:text-white hover:cursor-pointer hover:bg-blue-800 flex flex-col align-middle justify-center px-2"
+      >
+        Refresh
+      </div>
+      <div
+        class="about-computer bg-slate-50 h-10 text-black hover:text-white hover:cursor-pointer hover:bg-blue-800 flex flex-col align-middle justify-center px-2"
+      >
+        About this computer
+      </div>
+      <div
+        class="mtg bg-slate-50 h-10 text-black hover:text-white hover:cursor-pointer hover:bg-blue-800 flex flex-col align-middle justify-center px-2"
+      >
+        Meet the Gensec
+      </div>
+      <div
+        class="contact bg-slate-50 h-10 text-black hover:text-white hover:cursor-pointer hover:bg-blue-800 flex flex-col align-middle justify-center px-2"
+      >
+        Contact Us
+      </div>
+      <div
+        class="secret-menu bg-slate-50 h-10 text-black hover:text-white hover:cursor-pointer hover:bg-blue-800 flex flex-col align-middle justify-center px-2"
+      >
+        Secret Menu
+      </div>
+    </div>
+    <div id="context-menu"
+      class="rounded shadow-lg w-[300px] h-[204px] font-mono hidden bg-gray-500 absolute bottom-10 left-0 border-2 border-slate-50 mx-0.5 my-1 z-50 scale-90 drop-shadow-lg"
+    >
+      <div
+        class="refresh bg-slate-50 h-10 text-black hover:text-white hover:cursor-pointer hover:bg-blue-800 flex flex-col align-middle justify-center px-2"
+      >
+        Refresh
+      </div>
+      <div
+        class="about-computer bg-slate-50 h-10 text-black hover:text-white hover:cursor-pointer hover:bg-blue-800 flex flex-col align-middle justify-center px-2"
+      >
+        About this computer
+      </div>
+      <div
+        class="mtg bg-slate-50 h-10 text-black hover:text-white hover:cursor-pointer hover:bg-blue-800 flex flex-col align-middle justify-center px-2"
+      >
+        Meet the Gensec
+      </div>
+      <div
+        class="contact bg-slate-50 h-10 text-black hover:text-white hover:cursor-pointer hover:bg-blue-800 flex flex-col align-middle justify-center px-2"
+      >
+        Contact Us
+      </div>
+      <div
+        class="secret-menu bg-slate-50 h-10 text-black hover:text-white hover:cursor-pointer hover:bg-blue-800 flex flex-col align-middle justify-center px-2"
+      >
+        Secret Menu
+      </div>
+    </div>
+    <div id="popup"
+      class="popup hidden w-full h-full absolute inset-0 bg-slate-600 border-2 border-slate-100 transition-all duration-300 scale-95 opacity-0"
+      data-state="fullscreen"
+    >
+      <div
+        class="header flex justify-between items-center px-0.5 py-0.5 bg-slate-100 hover:cursor-move"
+      >
+        <div></div>
+        <div id="popup-title" class="ml-6"></div>
+        <div class="buttons flex gap-1 mb-0.5">
+          <button
+            class="h-full w-6 hover:cursor-pointer bg-slate-400 hover:bg-slate-700 rounded border-1 border-slate-400"
+            id="popup-min"
+            title="Toggle size"
+          >
+            &#9634;
+          </button>
+          <button
+            class="h-full w-6 hover:cursor-pointer bg-slate-400 hover:bg-slate-700 rounded border-1 border-slate-400"
+            id="popup-close"
+          >
+            X
+          </button>
+        </div>
+      </div>
+      <div id="popup-content">
+        
+      </div>
+    </div>
+    <div id="notification"
+     class="notification absolute right-10 bottom-20 bg-yellow-50 rounded border-2 border-yellow-50 w-[400px] h-[300px] opacity-100 scale-100 transition" id="notification">
+      <div class="notif-header w-full h-7 bg-blue-800 flex justify-between items-center">
+        <div class="mx-2 text-white font-semibold font-mono">New Notification!</div>
+        <button class="notif-close w-5 bg-gray-400 mx-1 border-1 hover:cursor-pointer hover:bg-gray-500 drop-shadow-sm font-bold text-sm"> X </button>
+      </div>
+      <div class="notif-content flex justify-between items-center w-full h-28 mt-13">
+        <div>
+          <img src="register.png" alt="Register" class="w-30 h-30">
+        </div>
+        <div class="notif-message flex justify-between items-center mx-2 h-full w-64 font-mono text-sm font-semibold">
+          The registerations for MLSC have begun! Click on the button below or the 'Registrations' icon on your desktop to be a part of our society.
+        </div>
+      </div>
+      <button class="register-button w-30 h-10 bg-gray-400 mt-5 ml-35 hover:cursor-pointer hover:bg-gray-500 font-mono drop-shadow-md border-2">Register</button>
+    </div>
+    <script> // Toggle popup fullscreen/partial
+      document.getElementById("popup-min").addEventListener("click", function () {
+        const popup = document.getElementById("popup");
+        if (popup.dataset.state === "fullscreen") {
+          popup.classList.remove("w-full", "h-full", "inset-0");
+          popup.classList.add("w-[600px]", "h-[400px]");
+          popup.style.left = "calc(50% - 200px)";
+          popup.style.top = "calc(50% - 150px)";
+          popup.style.position = "fixed";
+          popup.dataset.state = "partial";
+        } else {
+          popup.classList.add("w-full", "h-full", "inset-0");
+          popup.classList.remove("w-[600px]", "h-[400px]");
+          popup.style.left = "";
+          popup.style.top = "";
+          popup.style.position = "absolute";
+          popup.dataset.state = "fullscreen";
         }
-        setInterval(updateDateTime, 1000);
-        updateDateTime();
+      });
     </script>
-</body>
+    <script> // Pop up opener and closer
+      const openWindow = document.querySelectorAll(".icon")
+      openWindow.forEach(div => {
+        div.addEventListener("click", function () {
+        const popup = document.getElementById("popup");
+        popup.classList.remove("hidden", "opacity-0", "scale-95");
+        setTimeout(() => {
+          popup.classList.add("opacity-100", "scale-100");
+        }, 10);
+      });
+      }) 
+
+      document.getElementById("popup-close").addEventListener("click", function () {
+          const popup = document.getElementById("popup");
+          popup.classList.remove("opacity-100", "scale-100");
+          popup.classList.add("opacity-0", "scale-95");
+          setTimeout(() => {
+            popup.classList.add("hidden");
+          }, 300);
+        });
+    </script>
+    <script> // Function for right click
+      document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+        document.getElementById("start-menu").classList.add("hidden");
+        const menu = document.getElementById("context-menu");
+        menu.classList.remove("hidden", "scale-90");
+        menu.style.left = e.clientX + "px";
+        menu.style.top = e.clientY + "px";
+        setTimeout(() => {
+          menu.classList.add("scale-100");
+        }, 10);
+      });
+
+      document.addEventListener("click", function (e) {
+        const contextMenu = document.getElementById("context-menu");
+        if (!contextMenu.contains(e.target)) {
+          contextMenu.classList.add("hidden", "scale-95");
+          contextMenu.classList.remove("scale-100");
+        }
+      });
+
+      window.addEventListener("resize", () => {
+        const contextMenu = document.getElementById("context-menu");
+        contextMenu.classList.add("hidden", "scale-95");
+        contextMenu.classList.remove("scale-100");
+      });
+      window.addEventListener("scroll", () => {
+        const contextMenu = document.getElementById("context-menu");
+        contextMenu.classList.add("hidden", "scale-95");
+        contextMenu.classList.remove("scale-100");
+      });
+
+      document.addEventListener("click", function (e) {
+        const startMenu = document.getElementById("start-menu");
+        const startButton = document.querySelector(".start-button");
+        if (!startMenu.contains(e.target) && !startButton.contains(e.target)) {
+          startMenu.classList.add("hidden");
+        }
+      });
+    </script>
+    <script> // Function for clock
+      function updateDateTime() {
+        const now = new Date();
+        const options = {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+        };
+        document.getElementById("date-time").textContent = now.toLocaleString(
+          undefined,
+          options
+        );
+      }
+      setInterval(updateDateTime, 1000);
+      updateDateTime();
+    </script>
+    <script> // Refreshing the page
+      const refreshDivs = document.querySelectorAll(".refresh")
+      refreshDivs.forEach(div => {
+        div.addEventListener('click', () => {
+          location.reload();
+        })
+      });
+    </script>
+    <script> // Script for notification-register-button
+      document.querySelector(".register-button").addEventListener("click", function () {
+      const popup = document.getElementById("popup");
+      popup.classList.remove("hidden", "opacity-0", "scale-95");
+        setTimeout(() => {
+          popup.classList.add("opacity-100", "scale-100");
+        }, 10);
+      const notification = document.getElementById("notification");
+      notification.classList.add("hidden");
+      })
+    </script>
+    <script> // To close the notification
+      document.querySelector(".notif-close").addEventListener("click", function () {
+        const notif = document.getElementById("notification");
+        notif.classList.remove("opacity-100", "scale-100")
+        notif.classList.add("opacity-0", "scale-95");
+      });
+    </script>
+  </body>
 </html>
