@@ -1,0 +1,53 @@
+<head>
+<link rel="stylesheet" href="register.css">
+</head>
+<div class="form in-popup">
+  <div class="element">RECRUITMENT FORM</div>
+  <div class="element1">
+    <input type="text" placeholder="Enter your name" required /><br><br>
+    <input type="email" placeholder="Enter your E-MAIL" required /><br><br>
+    <input type="tel" placeholder="Phone Number" required /><br><br>
+
+    <select required>
+      <option value="" disabled selected>Year of Study</option>
+      <option>First Year</option>
+      <option>Second Year</option>
+    </select><br><br>
+
+    <select required>
+      <option value="" disabled selected>Domain Preference 1</option>
+      <option>Tech</option>
+      <option>Design</option>
+      <option>Management</option>
+    </select><br><br>
+
+    <select required>
+      <option value="" disabled selected>Domain Preference 2</option>
+      <option>Tech</option>
+      <option>Design</option>
+      <option>Management</option>
+    </select><br><br>
+
+    <select required>
+      <option value="" disabled selected>Domain Preference 3</option>
+      <option>Tech</option>
+      <option>Design</option>
+      <option>Management</option>
+    </select><br><br>
+
+    <input type="text" placeholder="Projects" /><br><br>
+    <input type="text" placeholder="Why do you want to join MLSC?" required />
+  </div>
+
+  <button type="submit">
+    <img src="./assets/registration/images/button.png" height="50" width="100" class="image" />
+  </button>
+  <div class="text">SUBMIT</div>
+</div>
+
+<script>
+  // This is optional, but good for safety if you ever reuse this file elsewhere
+  if (window.self !== window.top) {
+    document.querySelector('.form')?.classList.add('in-popup');
+  }
+</script>
