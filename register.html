@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Recruitment Form</title>
 
   <!-- Tailwind CSS -->
@@ -13,23 +13,18 @@
 
   <style>
     body {
-      margin: 0;
-      padding: 0;
       font-family: 'Pixelify Sans', sans-serif;
       background-color: black;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
     }
 
-    .flicker {
-      animation: flicker 6s infinite;
-    }
-
-    @keyframes flicker {
-      0%, 50%,100% {
-        opacity: 1;
-      }
-      25%, 75% {
-        opacity: 0.8;
-      }
+    .scan-wrapper {
+      position: absolute;
+      inset: 0;
+      z-index: -10;
+      pointer-events: none;
     }
 
     .scanline::before {
@@ -43,8 +38,8 @@
         transparent 2px,
         transparent 4px
       );
-      pointer-events: none;
       z-index: 1;
+      pointer-events: none;
       animation: scanlineHorizontal 0.4s linear infinite;
     }
 
@@ -68,16 +63,21 @@
       );
       mix-blend-mode: screen;
       pointer-events: none;
-      z-index: 2;
       filter: blur(0.5px);
+      z-index: 2;
     }
 
-    .font-pixel {
-      font-family: 'Pixelify Sans', sans-serif;
+    .flicker {
+      animation: flicker 6s infinite;
     }
 
-    .font-retro {
-      font-family: 'Press Start 2P', cursive;
+    @keyframes flicker {
+      0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        opacity: 1;
+      }
+      20%, 24%, 55% {
+        opacity: 0.8;
+      }
     }
 
     ::-webkit-scrollbar {
@@ -85,74 +85,64 @@
     }
   </style>
 </head>
-<body class="relative overflow-hidden">
 
-  <!-- 🎬 Background Layer (with flicker + scanline + vignette) -->
-  <div class="absolute inset-0 z-0 flicker scanline vignette">
-    <img src="./assets/registration/images/bg.jpg" alt="Background" class="w-full h-full object-cover" />
+<body class="relative font-pixel">
+
+  <!-- 🎬 Background with effects -->
+  <div class="scan-wrapper">
+    <div class="w-full h-full relative flicker scanline vignette">
+      <img src="./assets/registration/images/bg.jpg" alt="Background" class="w-full h-full object-cover" />
+    </div>
   </div>
 
-  <!-- 📝 Foreground Form Content -->
-  <div class="relative z-10 flex items-center justify-center h-155 bg-black/20">
-    <div class="w-full max-w-md p-6 rounded-lg text-white shadow-lg">
-      <div class="text-center text-lg md:text-xl font-retro drop-shadow-xl mb-6">
-        RECRUITMENT FORM
-      </div>
+  <!-- 📝 Foreground Form (z-10) -->
+  <div class="relative z-10 flex justify-center items-center min-h-screen bg-black/50 p-4">
+    <div class="w-full max-w-md bg-black/80 backdrop-blur-sm p-6 rounded-md shadow-lg text-white overflow-y-auto max-h-[90vh]">
 
-      <form class="space-y-4 text-center">
-        <input type="text" placeholder="Enter your name" required
-          class="w-[257px] h-[30px] px-2 rounded bg-red-950 border-2 border-black text-white text-sm font-pixel" />
+      <h2 class="text-center font-retro mb-6">RECRUITMENT FORM</h2>
 
-        <input type="email" placeholder="Enter your E-MAIL" required
-          class="w-[257px] h-[30px] px-2 rounded bg-red-950 border-2 border-black text-white text-sm font-pixel" />
+      <form class="flex flex-col gap-4">
+        <input type="text" placeholder="Enter your name" required class="bg-red-950 border border-black px-2 py-1 text-sm" />
+        <input type="email" placeholder="Enter your E-MAIL" required class="bg-red-950 border border-black px-2 py-1 text-sm" />
+        <input type="tel" placeholder="Phone Number" required class="bg-red-950 border border-black px-2 py-1 text-sm" />
 
-        <input type="tel" placeholder="Phone Number" required
-          class="w-[257px] h-[30px] px-2 rounded bg-red-950 border-2 border-black text-white text-sm font-pixel" />
-
-        <select required
-          class="w-[257px] h-[30px] px-2 rounded bg-red-950 border-2 border-black text-white text-sm font-pixel">
+        <select required class="bg-red-950 border border-black px-2 py-1 text-sm">
           <option value="" disabled selected>Year of Study</option>
           <option>First Year</option>
           <option>Second Year</option>
         </select>
 
-        <select required
-          class="w-[257px] h-[30px] px-2 rounded bg-red-950 border-2 border-black text-white text-sm font-pixel">
+        <select required class="bg-red-950 border border-black px-2 py-1 text-sm">
           <option value="" disabled selected>Domain Preference 1</option>
           <option>Tech</option>
           <option>Design</option>
           <option>Management</option>
         </select>
 
-        <select required
-          class="w-[257px] h-[30px] px-2 rounded bg-red-950 border-2 border-black text-white text-sm font-pixel">
+        <select required class="bg-red-950 border border-black px-2 py-1 text-sm">
           <option value="" disabled selected>Domain Preference 2</option>
           <option>Tech</option>
           <option>Design</option>
           <option>Management</option>
         </select>
 
-        <select required
-          class="w-[257px] h-[30px] px-2 rounded bg-red-950 border-2 border-black text-white text-sm font-pixel">
+        <select required class="bg-red-950 border border-black px-2 py-1 text-sm">
           <option value="" disabled selected>Domain Preference 3</option>
           <option>Tech</option>
           <option>Design</option>
           <option>Management</option>
         </select>
 
-        <input type="text" placeholder="Projects"
-          class="w-[257px] h-[30px] px-2 rounded bg-red-950 border-2 border-black text-white text-sm font-pixel" />
+        <input type="text" placeholder="Projects" class="bg-red-950 border border-black px-2 py-1 text-sm" />
+        <input type="text" placeholder="Why do you want to join MLSC?" required class="bg-red-950 border border-black px-2 py-1 text-sm" />
 
-        <input type="text" placeholder="Why do you want to join MLSC?" required
-          class="w-[257px] h-[30px] px-2 rounded bg-red-950 border-2 border-black text-white text-sm font-pixel" />
-
-        <button type="submit" class="mt-4 left-[35%] relative flex items-center justify-center">
-          <img src="./assets/registration/images/button.png" alt="Submit" width="100" height="50"
-            class="hover:brightness-110 transform hover:scale-105 transition duration-200 cursor-pointer"/>
+        <button type="submit" class="relative flex justify-center items-center mt-4">
+          <img src="./assets/registration/images/button.png" alt="Submit" width="100" height="50" class="hover:brightness-110 hover:scale-105 transition-all" />
           <span class="absolute text-white font-retro text-[10px] pointer-events-none">SUBMIT</span>
         </button>
       </form>
     </div>
   </div>
+
 </body>
 </html>

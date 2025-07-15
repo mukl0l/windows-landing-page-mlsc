@@ -406,7 +406,14 @@ function createAppWindow(id, title, url) {
   popup.appendChild(content);
   document.body.appendChild(popup);
 
+  // Lock scroll BEFORE reflow
+  if (!document.body.classList.contains("lock-scroll")) {
+    document.body.style.overflow = "hidden";
+    document.body.classList.add("lock-scroll");
+  }
   // 6. Animate in
+  popup.classList.remove("hidden", "opacity-0", "scale-95");
+
   setTimeout(() => {
     popup.classList.add("opacity-100", "scale-100");
   }, 10);
@@ -414,17 +421,61 @@ function createAppWindow(id, title, url) {
   // 7. Add to taskbar
   const taskbar = document.getElementById("taskbar-apps");
   const taskBtn = document.createElement("button");
-  taskBtn.textContent = title;
+
   taskBtn.className =
-    "bg-gray-300 text-black px-2 py-1 rounded-sm text-xs hover:bg-gray-400 border border-gray-400";
+    "taskbar-btn flex items-center gap-2 text-black px-3 py-1 text-sm font-mono border border-[#808080] bg-gradient-to-b from-[#d4d0c8] to-[#b5b5b5] shadow-inner hover:brightness-90 active:translate-y-[1px] h-10 rounded-sm";
+
+  // Create and add icon FIRST
+  const iconImg = document.createElement("img");
+  iconImg.src = iconMap.find((i) => i.title === title)?.selector
+    ? document.querySelector(iconMap.find((i) => i.title === title).selector)
+        ?.src
+    : "logo.png"; // fallback icon
+  iconImg.alt = "icon";
+  iconImg.className = "w-10 h-10 image-render-pixelated";
+
+  //  Add label text
+  const textSpan = document.createElement("span");
+  textSpan.textContent = title;
+
+  // Append icon first, then text
+  taskBtn.appendChild(iconImg);
+  taskBtn.appendChild(textSpan);
+
+  //  Onclick to toggle window
   taskBtn.onclick = () => {
-    if (popup.classList.contains("hidden")) {
-      popup.classList.remove("hidden");
+    const isHidden = popup.classList.contains("hidden");
+
+    if (isHidden) {
+      popup.classList.remove("hidden", "opacity-0", "scale-95");
+      popup.classList.add("opacity-100", "scale-100");
       bringToFront(popup);
+
+      // Only activate this one
+      document
+        .querySelectorAll(".taskbar-btn")
+        .forEach((btn) => btn.classList.remove("active-task"));
+      taskBtn.classList.add("active-task");
+
+      document.body.classList.add("lock-scroll");
     } else {
-      popup.classList.add("hidden");
+      popup.classList.remove("opacity-100", "scale-100");
+      popup.classList.add("opacity-0", "scale-95");
+      setTimeout(() => {
+        popup.classList.add("hidden");
+        taskBtn.classList.remove("active-task");
+
+        const anyStillOpen =
+          document.querySelectorAll(".popup:not(.hidden)").length > 0;
+        if (!anyStillOpen) {
+          document.body.classList.remove("lock-scroll");
+          document.body.style.overflow = "";
+        }
+      }, 300);
     }
   };
+
+  // Append to taskbar at the end
   taskbar.appendChild(taskBtn);
 
   // 8. Bring to front on click
@@ -434,6 +485,13 @@ function createAppWindow(id, title, url) {
   header.querySelector(".close-btn").onclick = () => {
     popup.remove();
     taskBtn.remove();
+
+    const anyStillOpen =
+      document.querySelectorAll(".popup:not(.hidden)").length > 0;
+    if (!anyStillOpen) {
+      document.body.classList.remove("lock-scroll");
+      document.body.style.overflow = "";
+    }
   };
 
   // 10. Minimize/restore button
