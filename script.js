@@ -4,6 +4,10 @@ function bringToFront(win) {
 }
 
 function makeDraggable(popup, header) {
+  if(popup.dataset.state === "fullscreen") {
+    return; // Don't allow dragging in fullscreen mode
+   } 
+  else {
   let isDragging = false,
     startX = 0,
     startY = 0,
@@ -34,6 +38,7 @@ function makeDraggable(popup, header) {
     document.body.style.userSelect = "";
   });
 }
+}
 
 // Preloader Hider
 window.addEventListener("DOMContentLoaded", function () {
@@ -47,46 +52,7 @@ window.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Popup Fullscreen/Partial Toggle
-// document.getElementById("popup-min").addEventListener("click", function () {
-//   const popup = document.getElementById("popup");
-//   if (popup.dataset.state === "fullscreen") {
-//     popup.classList.remove("w-full", "h-full", "inset-0");
-//     popup.classList.add("w-[600px]", "h-[400px]");
-//     popup.style.left = "calc(50% - 200px)";
-//     popup.style.top = "calc(50% - 150px)";
-//     popup.style.position = "fixed";
-//     popup.dataset.state = "partial";
-//   } else {
-//     popup.classList.add("w-full", "h-full", "inset-0");
-//     popup.classList.remove("w-[600px]", "h-[400px]");
-//     popup.style.left = "";
-//     popup.style.top = "";
-//     popup.style.position = "absolute";
-//     popup.dataset.state = "fullscreen";
-//   }
-// });
 
-// Popup Open & Close
-// const openWindow = document.querySelectorAll(".icon");
-// openWindow.forEach((div) => {
-//   div.addEventListener("click", function () {
-//     const popup = document.getElementById("popup");
-//     popup.classList.remove("hidden", "opacity-0", "scale-0");
-//     setTimeout(() => {
-//       popup.classList.add("opacity-100", "scale-100");
-//     }, 10);
-//   });
-// });
-
-// document.getElementById("popup-close").addEventListener("click", function () {
-//   const popup = document.getElementById("popup");
-//   popup.classList.remove("opacity-100", "scale-100");
-//   popup.classList.add("opacity-0", "scale-95");
-//   setTimeout(() => {
-//     popup.classList.add("hidden");
-//   }, 300);
-// });
 
 // Custom Right-Click Context Menu
 document.addEventListener("contextmenu", function (e) {
@@ -297,63 +263,6 @@ document.getElementById("popup-close").onclick = function () {
   }, 300);
 };
 
-// Dragging popup (yet to smoothen out)
-(function () {
-  const popup = document.getElementById("popup");
-  const header = document.getElementById("popup-header");
-  let isDragging = false,
-    startX = 0,
-    startY = 0,
-    origX = 0,
-    origY = 0;
-  let lastX = 0,
-    lastY = 0,
-    animating = false;
-
-  function animate() {
-    if (!isDragging) {
-      animating = false;
-      return;
-    }
-    popup.style.left = lastX + "px";
-    popup.style.top = lastY + "px";
-    popup.style.right = "auto";
-    popup.style.bottom = "auto";
-    popup.style.position = "fixed";
-    requestAnimationFrame(animate);
-  }
-
-  header.addEventListener("mousedown", function (e) {
-    if (popup.classList.contains("hidden")) return;
-    isDragging = true;
-    startX = e.clientX;
-    startY = e.clientY;
-    const rect = popup.getBoundingClientRect();
-    origX = rect.left;
-    origY = rect.top;
-    document.body.style.userSelect = "none";
-    lastX = origX;
-    lastY = origY;
-    if (!animating) {
-      animating = true;
-      requestAnimationFrame(animate);
-    }
-  });
-
-  document.addEventListener("mousemove", function (e) {
-    if (!isDragging) return;
-    let dx = e.clientX - startX;
-    let dy = e.clientY - startY;
-    lastX = origX + dx;
-    lastY = origY + dy;
-  });
-
-  document.addEventListener("mouseup", function () {
-    isDragging = false;
-    document.body.style.userSelect = "";
-  });
-})();
-
 function createAppWindow(id, title, url) {
   // 1. Check if window already exists
   let existing = document.getElementById(id);
@@ -382,7 +291,7 @@ function createAppWindow(id, title, url) {
   header.innerHTML = `
     <div class="ml-2 text-black font-semibold">${title}</div>
     <div class="flex gap-1">
-      <button title="Toggle Size" class="minimize-btn w-6 h-6 bg-slate-400 hover:bg-slate-700 text-sm font-bold border">▭</button>
+      <button title="Toggle Size" class="minimize-btn w-6 h-6 bg-slate-400 hover:bg-slate-700 text-sm font-bold border">◻</button>
       <button title="Close" class="close-btn w-6 h-6 bg-slate-400 hover:bg-slate-700 text-sm font-bold border">X</button>
     </div>
   `;
@@ -390,7 +299,7 @@ function createAppWindow(id, title, url) {
   // 4. Window content
   const content = document.createElement("div");
   content.className =
-    "w-full h-[calc(100%-2.5rem)] overflow-auto text-white p-2";
+    "w-full h-[calc(100%-2.5rem)] overflow-auto text-white";
   content.innerHTML = `<div class="text-center mt-16">Loading...</div>`;
   fetch(url)
     .then((res) => res.text())
@@ -506,8 +415,9 @@ function createAppWindow(id, title, url) {
       popup.style.left = "0";
       popup.style.top = "0";
       popup.style.width = "100vw";
-      popup.style.height = "100vh";
+      popup.style.height = "94vh";
       popup.dataset.state = "fullscreen";
+      popup.style.position = "fixed";
     }
   };
 

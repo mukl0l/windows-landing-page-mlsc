@@ -96,7 +96,7 @@
     </style>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body class="bg-black bg-[url(/bg.jpg)] bg-[auto_650px] sm:bg-[auto_1300px]">
+  <body class="bg-black bg-[url(/bg.jpg)] bg-[auto_650px] sm:bg-[auto_1000px]">
     <div id="container" class="container text-sm font-mono px-4">
       <div class="column flex gap-4">
         <div
@@ -172,17 +172,16 @@
         </div>
       </div>
     </div>
-    <div
-      id="footer"
+    <div id="footer"
       class="footer w-full h-12 bg-gradient-to-b from-[#d6dfea] to-[#b8cce4] border-t-2 border-[#5c95ca] shadow-inner z-1 absolute bottom-0 bg-yellow-50 flex items-center justify-between px-2"
     >
       <!-- Left side: Start button and taskbar apps -->
       <div class="flex items-center gap-1">
         <button
-          class="start-button w-15 h-full px-4 text-black hover:text-white hover:bg-blue-800 transition hover:cursor-pointer hover:bg-blue-90"
+          class="start-button w-15 h-full px-2 text-black hover:text-white hover:bg-blue-800 transition hover:cursor-pointer hover:bg-blue-90"
           onclick="document.getElementById('start-menu').classList.toggle('hidden');"
         >
-          <img src="logo.png" />
+          <img src="mlsclogo-2.png" />
         </button>
         <div
           id="taskbar-apps"
@@ -198,9 +197,7 @@
         <div class="font-mono hover:cursor-default" id="date-time"></div>
       </div>
     </div>
-
-    <div
-      id="start-menu"
+    <div id="start-menu"
       class="start-menu w-[300px] h-[204px] font-mono hidden bg-gray-500 absolute bottom-10 left-0 border-2 border-slate-50 mx-0.5 my-1 z-50 drop-shadow-lg"
     >
       <div
@@ -229,8 +226,7 @@
         Secret Menu
       </div>
     </div>
-    <div
-      id="context-menu"
+    <div id="context-menu"
       class="rounded shadow-lg w-[300px] h-[204px] font-mono hidden bg-gray-500 absolute bottom-10 left-0 border-2 border-slate-50 mx-0.5 my-1 z-50 scale-90 drop-shadow-lg"
     >
       <div
@@ -259,12 +255,8 @@
         Secret Menu
       </div>
     </div>
-
-    <!-- //popup -->
-
-    <div
-      id="notification"
-      class="notification absolute right-5 bottom-15 bg-yellow-50 rounded border-2 border-yellow-50 w-[350px] h-[200px] sm:w-[400px] sm:h-[300px] opacity-100 scale-100 transition"
+    <div id="notification"
+      class="notification absolute right-5 bottom-15 bg-yellow-50 rounded border-2 border-yellow-50 sm:w-[400px] sm:h-[300px] opacity-100 scale-100 transition hidden sm:block"
       id="notification"
     >
       <div
@@ -300,24 +292,28 @@
         Register
       </button>
     </div>
-    <div
-      id="pre-loader"
+    <div id="pre-loader"
       class="fixed inset-0 bg-black flex justify-center items-center z-50 opacity-100 transition flex-col"
       style="cursor: url('/loading.cur') 16 16, auto"
     >
+      <img
+        src="mlsclogo.jpeg"
+        alt="Loading Logo"
+        class="w-40 h-40 mb-4 image-render-pixelated"
+      />
       <div
-        class="header text-white text-lg font-mono flex justify-center items-center"
-      >
-        Loading the world of MLSC
-      </div>
-      <div
-        class="relative w-[300px] h-[16px] bg-black overflow-hidden rounded border-2 border-white mx-auto mt-10"
+        class="relative w-[300px] h-[16px] bg-black overflow-hidden rounded border-2 border-white mx-auto mt-5"
       >
         <div class="absolute top-0 left-0 h-full flex loader-track">
           <div class="bar-rect border-white"></div>
           <div class="bar-rect border-white"></div>
           <div class="bar-rect border-white"></div>
         </div>
+      </div>
+      <div
+        class="header text-white text-lg mt-5 font-mono flex justify-center items-center"
+      >
+        Loading the world of MLSC
       </div>
     </div>
     <script src="script.js"></script>
