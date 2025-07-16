@@ -53,7 +53,6 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
 // Custom Right-Click Context Menu
 document.addEventListener("contextmenu", function (e) {
   e.preventDefault();
