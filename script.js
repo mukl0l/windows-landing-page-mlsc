@@ -277,11 +277,28 @@ function createAppWindow(id, title, url) {
   const popup = document.createElement("div");
   popup.id = id;
   popup.className =
-    "popup fixed bg-slate-600 border-2 border-slate-100 transition-all duration-300 scale-95 opacity-0 w-[600px] h-[400px]";
+    "popup fixed bg-slate-600 border-2 border-slate-100 transition-all duration-300 scale-95 opacity-0";
   popup.dataset.state = "partial";
-  popup.style.left = "calc(50% - 300px)";
-  popup.style.top = "calc(50% - 200px)";
+
+  // Responsive sizing
+  function setPopupSize() {
+    if (window.innerWidth < 700) {
+      popup.style.width = "90vw";
+      popup.style.height = "70vh";
+      popup.style.left = "5vw";
+      popup.style.top = "15vh";
+    } else {
+      popup.style.width = "600px";
+      popup.style.height = "400px";
+      popup.style.left = "calc(50% - 300px)";
+      popup.style.top = "calc(50% - 200px)";
+    }
+  }
+  setPopupSize();
   popup.style.zIndex = ++zIndexCounter;
+
+  // Listen for resize and update window size
+  window.addEventListener("resize", setPopupSize);
 
   // 3. Window header
   const header = document.createElement("div");
@@ -342,15 +359,26 @@ function createAppWindow(id, title, url) {
   iconImg.alt = "icon";
   iconImg.className = "w-10 h-10 image-render-pixelated";
 
-  //  Add label text
+  // Add label text
   const textSpan = document.createElement("span");
   textSpan.textContent = title;
+
+  // Function to update text visibility based on screen width
+  function updateTaskBtnText() {
+    if (window.innerWidth < 700) {
+      textSpan.style.display = "none";
+    } else {
+      textSpan.style.display = "";
+    }
+  }
+  updateTaskBtnText();
+  window.addEventListener("resize", updateTaskBtnText);
 
   // Append icon first, then text
   taskBtn.appendChild(iconImg);
   taskBtn.appendChild(textSpan);
 
-  //  Onclick to toggle window
+  // Onclick to toggle window
   taskBtn.onclick = () => {
     const isHidden = popup.classList.contains("hidden");
 
